@@ -1,4 +1,43 @@
-function CreateOrder(){
+import { useState } from 'react';
+
+function CreateOrder(props){
+
+  const [address, setAddress] = useState("");
+
+  const handleAddress = (event) => {
+    setAddress(event.target.value);
+  }
+
+  const openModal = (event) => {
+    props.onSetShow(true)
+  }
+
+  const createOrder = (event) => {
+    let url = "https://dev.getinspectify.com/api/orders/"
+    let body = {
+        "property_address": address,
+        "team_token": "X8x7xb3rXRAHTHc2wfgjFzW5"
+    }
+    let headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+
+    fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      //If successful, bring up the modal
+      if(!data.errors){
+        openModal();
+      } else {
+        console.log("failure")
+      }
+    })
+  }
+
   return(
   <div className="CreateOrder">
     <div className="orderText">
@@ -7,8 +46,8 @@ function CreateOrder(){
       </div>
 
       <div className="propertyAddress">
-        <input className="addressInput" type="text" placeholder="Property address"></input>
-        <button className="orderButton">Create Order</button>
+        <input className="addressInput" type="text" placeholder="     Property address" value={address} onChange={handleAddress}></input>
+        <button className="orderButton" onClick={createOrder}>Create Order</button>
       </div>
 
       <div className="smalltext">

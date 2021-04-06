@@ -22,7 +22,7 @@ function Footer(){
               Email us at <b>Hello@getinspectify.com</b>
             </td>
             <td>
-              <b>Terms of Services</b>
+              <b><a href="https://public-inspectify.s3.amazonaws.com/documents/Inspectify+-+Terms+of+Use.pdf">Terms of Services</a></b>
             </td>
           </tr>
           <tr>
@@ -30,7 +30,7 @@ function Footer(){
               Or call us at <b>(855) 456-6446</b>
             </td>
             <td>
-              <b>Privacy Policy</b>
+              <b><a href="https://public-inspectify.s3.amazonaws.com/documents/Inspectify+-+Privacy+Policy.pdf">Privacy Policy</a></b>
             </td>
           </tr>
         </tbody>
